@@ -8,6 +8,6 @@ export interface User {
 	id: string;
 	username: string;
 	discriminator: string;
-	icon?: string;
+	avatar?: string;
 	accessToken: string;
 }

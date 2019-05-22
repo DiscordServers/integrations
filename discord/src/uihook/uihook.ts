@@ -1,9 +1,6 @@
 import { htm, withUiHook } from '@zeit/integration-utils';
 import getAuthorizeUrl from '../lib/get-authorize-url';
-import {
-	getDiscordGuildIcon,
-	getDiscordUserIcon
-} from '../lib/get-discord-icon';
+import {getDiscordGuildIcon} from '../lib/get-discord-icon';
 import getIntegrationConfig from '../lib/mongodb/get-integration-config';
 import getZeitClient from '../lib/zeit-client';
 
@@ -58,11 +55,9 @@ export default withUiHook(async ({ payload }) => {
 				const creatorUsername = creator
 					? creator.username
 					: `user deleted from team`;
-				const avatar =
-					getDiscordUserIcon(discordAuthorization.user) ||
-					(creator
+				const avatar = creator
 						? `https://zeit.co/api/www/avatar/?u=${creatorUsername}&s=150`
-						: null);
+						: null;
 
 				return htm`
 					<Box display="flex" flexDirection="column" backgroundColor="#fff" border="1px solid #eaeaea" borderRadius="5px" overflow="hidden">

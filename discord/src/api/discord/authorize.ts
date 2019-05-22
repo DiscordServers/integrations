@@ -13,8 +13,8 @@ interface AuthorizeQuery {
 }
 
 /**
- * Handles a Slack authorization request generating a state and writing
- * context information to a cookie to later redirect to the slack
+ * Handles a Discord authorization request generating a state and writing
+ * context information to a cookie to later redirect to the Discord
  * authorization URL to complete the flow.
  */
 export default function authorize(req: IncomingMessage, res: ServerResponse) {

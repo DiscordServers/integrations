@@ -4,7 +4,7 @@ const { DISCORD_CLIENT_ID, HOOK_URL } = process.env;
 
 /**
  * Allows to get a formatted authorization URL to authenticate with OAuth
- * in Slack so we can show the user the authorization screen that later
+ * in Discord so we can show the user the authorization screen that later
  * redirects to the callback URL.
  */
 export default function getDiscordAuthorizeUrl(scope: string, state: string) {

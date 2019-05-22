@@ -11,6 +11,7 @@ export const getDiscordGuildIcon = (guild: Guild): string | null => {
 };
 
 export const getDiscordUserIcon = (user: User): string | null => {
+	console.log(user);
 	if (!user.icon) {
 		return `https://cdn.discordapp.com/embed/avatars/${user.id}/${
 			user.discriminator

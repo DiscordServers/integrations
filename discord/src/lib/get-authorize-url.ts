@@ -4,7 +4,7 @@ import { SCOPE } from '../constants';
 const { HOOK_URL } = process.env;
 
 /**
- * Allows to get a formatted authorization URL that later redirects to Slack.
+ * Allows to get a formatted authorization URL that later redirects to Discord.
  * It includes in the query string the requested scope, the ownerId and
  * the redirection URL for when the process is done.
  */

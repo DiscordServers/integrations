@@ -6,12 +6,6 @@
     {"src": "src/**/*.ts", "use": "@now/node"}
   ],
   "routes":  [
-    {
-      "src":     "/(.*)",
-      "methods": ["OPTIONS"],
-      "status":  "204",
-      "headers": {"Access-Control-Allow-Origin": "https://zeit.co", "Access-Control-Allow-Headers": "Content-Type"}
-    },
     {"src": "/authorize", "dest": "/src/api/discord/authorize.ts"},
     {"src": "/callback", "dest": "/src/api/discord/callback.ts"},
     {"src": "/uihook", "dest": "/src/uihook/uihook.ts"},

@@ -3,7 +3,7 @@ import { parse } from 'url';
 import { send, json } from 'micro';
 import fetch from 'node-fetch';
 import { Event } from '../lib/zeit-client';
-import getFormatter from '../lib/formatter';
+import getFormatter from '../../../slack/src/lib/formatter';
 import getIntegrationConfig from '../lib/mongodb/get-integration-config';
 
 interface WebhookParams {
@@ -26,10 +26,9 @@ export default async function webhookHandler(
 		return send(res, 200);
 	}
 
-	await fetch(incomingWebhook, {
+	await fetch(incomingWebhook + '/slack', {
 		method: 'POST',
 		body: JSON.stringify(body)
 	});
 
-	return send(res, 200);
 }

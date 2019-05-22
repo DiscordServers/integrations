@@ -33,7 +33,11 @@ export default function authorize(req: IncomingMessage, res: ServerResponse) {
 	}
 
 	if (!query.configurationId) {
-		return send(res, 403, 'A query parameter `configurationId` is required');
+		return send(
+			res,
+			403,
+			'A query parameter `configurationId` is required'
+		);
 	}
 
 	/**

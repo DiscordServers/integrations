@@ -75,7 +75,11 @@ export default async function zeitCallback(
 		});
 
 		res.writeHead(302, {
-			Location: getAuthorizeUrl({ redirect_uri: next, ownerId, configurationId })
+			Location: getAuthorizeUrl({
+				redirect_uri: next,
+				ownerId,
+				configurationId
+			})
 		});
 		res.end('Redirecting...');
 		return null;

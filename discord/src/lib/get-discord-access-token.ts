@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import { stringify } from 'querystring';
 
-const {HOOK_URL} = process.env;
+const { HOOK_URL } = process.env;
 
 export interface DiscordTokenInfo {
 	token_type: string;
@@ -25,7 +25,10 @@ export interface DiscordTokenInfo {
  * assumed that the token has the scope of incoming webhook as that's the
  * only feature we include for now.
  */
-export default async function getAccessToken(code: string, scope: string): Promise<DiscordTokenInfo> {
+export default async function getAccessToken(
+	code: string,
+	scope: string
+): Promise<DiscordTokenInfo> {
 	const response = await fetch('https://discordapp.com/api/oauth2/token', {
 		method: 'POST',
 		headers: {
@@ -33,17 +36,21 @@ export default async function getAccessToken(code: string, scope: string): Promi
 			Accept: 'application/json'
 		},
 		body: stringify({
-			client_id:     process.env.DISCORD_CLIENT_ID,
+			client_id: process.env.DISCORD_CLIENT_ID,
 			client_secret: process.env.DISCORD_CLIENT_SECRET,
-			grant_type:    'authorization_code',
-			redirect_uri:  `${HOOK_URL}/callback`,
+			grant_type: 'authorization_code',
+			redirect_uri: `${HOOK_URL}/callback`,
 			code,
 			scope
 		})
 	});
 
 	if (response.status !== 200) {
-		throw new Error(`Invalid status code while getting token: ${response.status} error: ${await response.text()}`);
+		throw new Error(
+			`Invalid status code while getting token: ${
+				response.status
+			} error: ${await response.text()}`
+		);
 	}
 
 	return await response.json();

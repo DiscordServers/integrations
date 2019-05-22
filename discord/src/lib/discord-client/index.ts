@@ -2,7 +2,7 @@ import buildGetGuildInfo from './get-guild-info';
 
 export default function getDiscordClient({ token }: { token: string }) {
 	return {
-		getGuildInfo: buildGetGuildInfo({ token }),
+		getGuildInfo: buildGetGuildInfo({ token })
 	};
 }
 

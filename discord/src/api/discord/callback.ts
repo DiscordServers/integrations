@@ -60,12 +60,14 @@ export default async function callback(
 	const tokenInfo = await getDiscordAccessToken(code, context.scope);
 	const incomingWebhook = tokenInfo.webhook;
 	if (!incomingWebhook) {
-		throw new Error('The integration only support `incoming_webhook` scope');
+		throw new Error(
+			'The integration only support `incoming_webhook` scope'
+		);
 	}
 
 	const [user, guild] = await Promise.all([
 		getDiscordUser(tokenInfo),
-		getDiscordGuild(tokenInfo),
+		getDiscordGuild(tokenInfo)
 	]);
 
 	// Get the integration configurationa and the zeit client to create a webhook
@@ -88,7 +90,7 @@ export default async function callback(
 					scope: tokenInfo.scope,
 					user,
 					guild,
-					webhook: incomingWebhook,
+					webhook: incomingWebhook
 				},
 				zeitWebhook
 			}

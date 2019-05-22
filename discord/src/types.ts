@@ -1,5 +1,5 @@
-import {Guild, User} from './lib/discord-client';
-import {Webhook} from './lib/zeit-client';
+import { Guild, User } from './lib/discord-client';
+import { Webhook } from './lib/zeit-client';
 
 export interface DiscordAuthorization {
 	accessToken: string;

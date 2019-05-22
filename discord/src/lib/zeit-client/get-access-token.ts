@@ -21,9 +21,9 @@ export default async function getAccessToken(code: string) {
 		},
 		body: stringify({
 			code,
-			client_id:     ZEIT_CLIENT_ID,
+			client_id: ZEIT_CLIENT_ID,
 			client_secret: ZEIT_CLIENT_SECRET,
-			redirect_uri:  ZEIT_CLIENT_REDIRECT_URI
+			redirect_uri: ZEIT_CLIENT_REDIRECT_URI
 		})
 	});
 

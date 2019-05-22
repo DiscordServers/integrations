@@ -1,6 +1,9 @@
-import {htm, withUiHook} from '@zeit/integration-utils';
+import { htm, withUiHook } from '@zeit/integration-utils';
 import getAuthorizeUrl from '../lib/get-authorize-url';
-import {getDiscordGuildIcon, getDiscordUserIcon} from '../lib/get-discord-icon';
+import {
+	getDiscordGuildIcon,
+	getDiscordUserIcon
+} from '../lib/get-discord-icon';
 import getIntegrationConfig from '../lib/mongodb/get-integration-config';
 import getZeitClient from '../lib/zeit-client';
 
@@ -12,7 +15,7 @@ export default withUiHook(async ({ payload }) => {
 	const authorizeUrl = getAuthorizeUrl({
 		redirect_uri: encodeURIComponent(payload.installationUrl),
 		ownerId,
-		configurationId,
+		configurationId
 	});
 
 	const configurationWebhooks = config.webhooks.filter(
@@ -55,10 +58,12 @@ export default withUiHook(async ({ payload }) => {
 				const creatorUsername = creator
 					? creator.username
 					: `user deleted from team`;
-				const avatar = getDiscordUserIcon(discordAuthorization.user) || (creator
-					? `https://zeit.co/api/www/avatar/?u=${creatorUsername}&s=150`
-					: null);
-				
+				const avatar =
+					getDiscordUserIcon(discordAuthorization.user) ||
+					(creator
+						? `https://zeit.co/api/www/avatar/?u=${creatorUsername}&s=150`
+						: null);
+
 				return htm`
 					<Box display="flex" flexDirection="column" backgroundColor="#fff" border="1px solid #eaeaea" borderRadius="5px" overflow="hidden">
 						<Box display="flex" padding="15px" flexDirection="column">
@@ -70,7 +75,11 @@ export default withUiHook(async ({ payload }) => {
 								`}
 								<Box marginLeft="20px">
 									<Box display="flex" fontSize="18px" fontWeight="bold">
-										${zeitWebhook.events.length === 0 ? 'All events' : zeitWebhook.events.join(', ')}
+										${
+											zeitWebhook.events.length === 0
+												? 'All events'
+												: zeitWebhook.events.join(', ')
+										}
 									</Box>
 									<Box display="flex" color="#666">
 										${discordAuthorization.guild.name}
@@ -88,7 +97,8 @@ export default withUiHook(async ({ payload }) => {
 								<Box display="flex" marginRight="5px" fontSize="12px" color="#444">
 									Installed by ${creatorUsername}
 								</Box>
-								${avatar && htm`
+								${avatar &&
+									htm`
 									<Box display="flex" borderRadius="50%" overflow="hidden" maxHeight="20px" maxWidth="20px">
 										<Img src=${avatar} width="100%" />
 									</Box>
